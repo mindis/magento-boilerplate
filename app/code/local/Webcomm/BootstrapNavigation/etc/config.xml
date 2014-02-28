@@ -30,6 +30,16 @@
 			</bootstrapnavigation>
 		</models>
 	</global>
+	<frontend>
+		<layout>
+			<updates>
+				<!-- Add layout update to override a change made by JC_CleverCms -->
+				<webcomm_bootstrapnavigation module="Webcomm_BootstrapNavigation">
+					<file>webcomm_bootstrapnavigation.xml</file>
+				</webcomm_bootstrapnavigation>
+			</updates>
+		</layout>
+	</frontend>
 	<default>
 		<catalog>
 			<navigation>

@@ -1,13 +1,21 @@
 <?php
 
-class Webcomm_BootstrapNavigation_Block_Page_Html_Topmenu extends Mage_Page_Block_Html_Topmenu
+class Webcomm_BootstrapNavigation_Block_Page_Html_Topmenu extends JR_CleverCms_Block_Page_Html_Topmenu
 {
     /**
      * {@inheritDoc}
      */
     public function getHtml($outermostClass = '', $childrenWrapClass = '')
     {
-        $html = parent::getHtml($outermostClass, $childrenWrapClass);
+        // MERCATOR - Modified to work alongside JR_CleverCms
+        $categoriesIsFirst = !$this->showHomepageLink();
+        $categoriesIsLast = !$this->hasCmsNavigationMenuPages();
+        $cmsIsFirst = !$this->hasCategoriesNavigationMenuPages();
+
+        $html = $this->renderHomepageLinkHtml(0, false, true, 'level-top', '', $this->__("Home"));
+        $html.= $this->renderCategoriesMenuHtmlClever(0, $categoriesIsLast, $categoriesIsFirst, 'level-top');
+        $html.= $this->renderCmsMenuHtml(0, true, $cmsIsFirst, 'level-top');
+        $html = str_replace("\n", '', $html);
 
         if (Mage::getStoreConfig('catalog/navigation/top_in_dropdown')) {
             $html = $this->_addDropdownLink($html);

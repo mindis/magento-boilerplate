@@ -8,6 +8,10 @@
             <depends>
                 <Mage_Catalog/>
                 <Mage_Page/>
+                <!-- Make sure we load after JR_CleverCms, so our
+                     layout/config updates apply after its and take
+                     precedence -->
+                <JR_CleverCms/>
             </depends>
         </Webcomm_BootstrapNavigation>
     </modules>
